@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTL - የገንዘብ ማስተላለፊያ</title>
+    <style>
+        body { background-color: #0d1117; color: #ffffff; font-family: Arial, sans-serif; margin: 0; padding: 15px; padding-bottom: 70px; display: flex; justify-content: center; }
+        .container { background-color: #161b22; padding: 20px; border-radius: 12px; width: 100%; max-width: 400px; box-sizing: border-box; }
+        .amount-box { background: linear-gradient(135deg, #ff8c00, #ff4500); color: white; text-align: center; padding: 20px; border-radius: 10px; font-size: 24px; font-weight: bold; margin-bottom: 20px; }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 6px; font-size: 13px; color: #8b949e; }
+        .field-row { display: flex; gap: 8px; }
+        input[type="text"] { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #30363d; background-color: #0b0f19; color: #fff; box-sizing: border-box; font-size: 14px; }
+        .copy-btn { background-color: #1f6feb; color: white; border: none; padding: 0 15px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .instruction-box { background-color: rgba(248, 81, 73, 0.1); border-left: 4px solid #f85149; padding: 12px; font-size: 12px; color: #c9d1d9; border-radius: 4px; margin-bottom: 15px; }
+        .submit-btn { width: 100%; padding: 14px; background-color: #238636; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+        .navbar { position: fixed; bottom: 0; left: 0; width: 100%; background-color: #161b22; border-top: 1px solid #30363d; display: flex; justify-content: space-around; padding: 10px 0; z-index: 1000; }
+        .nav-item { color: #8b949e; text-decoration: none; font-size: 12px; text-align: center; }
+        .nav-item.active { color: #58a6ff; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="amount-box" id="displayAmount">1000.00 ETB</div>
+        <div class="input-group">
+            <label>Order ID</label>
+            <div class="field-row"><input type="text" id="orderId" value="TTL-987654" readonly><button class="copy-btn" onclick="copyText('orderId')">Copy</button></div>
+        </div>
+        <div class="input-group">
+            <label>BANK</label>
+            <div class="field-row"><input type="text" id="bankName" value="Telebirr / CBE" readonly><button class="copy-btn" onclick="copyText('bankName')">Copy</button></div>
+        </div>
+        <div class="input-group">
+            <label>Username / Name</label>
+            <div class="field-row"><input type="text" id="accName" value="Abenezer Ayalew" readonly><button class="copy-btn" onclick="copyText('accName')">Copy</button></div>
+        </div>
+        <div class="input-group">
+            <label>Account Number</label>
+            <div class="field-row"><input type="text" id="accNum" value="1000679258738" readonly><button class="copy-btn" onclick="copyText('accNum')">Copy</button></div>
+        </div>
+        <div class="instruction-box">
+            After transaction, fill in the code starting with "FT" or "fH" from your text message.
+        </div>
+        <div class="input-group">
+            <label>Input Transaction Code (Required)</label>
+            <input type="text" placeholder="ምሳሌ: FT24XXXXXX">
+        </div>
+        <button class="submit-btn" onclick="alert('ክፍያው በትክክል ተመዝግቧል!')">ክፍያ አረጋግጥ</button>
+    </div>
+
+    <div class="navbar">
+        <a href="index.html" class="nav-item">ቤት ገጽ</a>
+        <a href="deposit.html" class="nav-item active">ገቢ</a>
+        <a href="team.html" class="nav-item">ቡድን</a>
+        <a href="task.html" class="nav-item">ዕቅድ</a>
+        <a href="profile.html" class="nav-item">የእኔ</a>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const amount = urlParams.get('amount');
+        if (amount) { document.getElementById('displayAmount').innerText = parseFloat(amount).toFixed(2) + " ETB"; }
+        function copyText(id) {
+            var text = document.getElementById(id);
+            navigator.clipboard.writeText(text.value);
+            alert("ተቀድቷል: " + text.value);
+        }
+    </script>
+</body>
+</html>

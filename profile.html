@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTL - የእኔ መገለጫ እና ገንዘብ ማውጣት</title>
+    <style>
+        body { background-color: #0d1117; color: #ffffff; font-family: Arial, sans-serif; margin: 0; padding-bottom: 70px; }
+        .profile-header { background-color: #161b22; padding: 20px; display: flex; align-items: center; gap: 15px; border-bottom: 1px solid #30363d; }
+        .avatar { width: 50px; height: 50px; background: #30363d; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .balance-card { background: #238636; margin: 15px; padding: 15px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .withdraw-section { background: #161b22; margin: 15px; padding: 20px; border-radius: 10px; border: 1px solid #30363d; }
+        .section-title { font-size: 15px; font-weight: bold; color: #58a6ff; margin-bottom: 15px; }
+        .form-group { margin-bottom: 12px; }
+        label { display: block; margin-bottom: 5px; font-size: 12px; color: #8b949e; }
+        input, select { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #30363d; background-color: #0d1117; color: #fff; box-sizing: border-box; font-size: 13px; }
+        .submit-btn { width: 100%; padding: 11px; background: linear-gradient(135deg, #1f6feb, #388bfd); color: white; border: none; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; margin-top: 5px; }
+        .menu-list { background: #161b22; margin: 15px; border-radius: 10px; overflow: hidden; border: 1px solid #30363d; }
+        .menu-item { padding: 15px; border-bottom: 1px solid #30363d; color: #c9d1d9; text-decoration: none; display: block; font-size: 14px; }
+        .menu-item:last-child { border-bottom: none; }
+        .navbar { position: fixed; bottom: 0; left: 0; width: 100%; background-color: #161b22; border-top: 1px solid #30363d; display: flex; justify-content: space-around; padding: 10px 0; z-index: 1000; }
+        .nav-item { color: #8b949e; text-decoration: none; font-size: 12px; text-align: center; }
+        .nav-item.active { color: #58a6ff; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="profile-header">
+        <div class="avatar">👤</div>
+        <div>
+            <div style="font-weight:bold; font-size:16px;" id="userPhone">0900000000</div>
+            <div style="font-size:12px; color:#8b949e;" id="userInviteCodeDisplay">የግብዣ ኮድ: --</div>
+        </div>
+    </div>
+
+    <div class="balance-card">
+        <div>
+            <div style="font-size:12px;">የሂሳብ ሒና (Balance)</div>
+            <div style="font-size:20px; font-weight:bold;" id="userBalance">ETB 0.00</div>
+        </div>
+    </div>
+
+    <!-- እዚህ ጋር የባንክ አማራጮችን የያዘው የገንዘብ ማውጫ ፎርም ተጨምሯል -->
+    <div class="withdraw-section">
+        <div class="section-title">💳 ገንዘብ ማውጫ እና የባንክ አማራጮች</div>
+        <form onsubmit="handleWithdraw(event)">
+            <div class="form-group">
+                <label>የሚያወጡትን የብር መጠን (Amount)</label>
+                <input type="number" id="withdrawAmount" placeholder="ብር ያስገቡ (ምሳሌ: 500)" required>
+            </div>
+
+            <div class="form-group">
+                <label>የባንክ አማራጭ (Bank Name)</label>
+                <select id="bankName" required>
+                    <option value="">ባንክ ይምረጡ</option>
+                    <option value="CBE">የኢትዮጵያ ንግድ ባንክ (CBE)</option>
+                    <option value="Telebirr">ቴሌብር (Telebirr)</option>
+                    <option value="Awash">አዋሽ ባንክ (Awash Bank)</option>
+                    <option value="Dashen">ዳሸን ባንክ (Dashen Bank)</option>
+                    <option value="Abyssinia">አቢሲኒያ ባንክ (Bank of Abyssinia)</option>
+                    <option value="Hibret">ህብረት ባንክ (Hibret Bank)</option>
+                    <option value="Oromia">ኦሮሚያ ባንክ (Oromia Bank)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>የባንክ የሂሳብ ቁጥር / ስልክ ቁጥር</label>
+                <input type="text" id="accountNumber" placeholder="የባንክ አኮውንት ወይም የቴሌብር ቁጥር" required>
+            </div>
+
+            <div class="form-group">
+                <label>የባንክ ባለቤት ስም (Account Holder Name)</label>
+                <input type="text" id="accountName" placeholder="ሙሉ ስምዎን ያስገቡ" required>
+            </div>
+
+            <button type="submit" class="submit-btn">ገንዘብ ማውጣት ጠይቅ</button>
+        </form>
+    </div>
+
+    <div class="menu-list">
+        <a href="team.html" class="menu-item">👥 ጓደኞችን ይጋብዙ</a>
+        <a href="https://t.me/ALDUC23" target="_blank" class="menu-item">💬 የደንበኞች ግንኙነት</a>
+        <a href="login.html" class="menu-item" style="color:#f85149;">🚪 ውጣ</a>
+    </div>
+
+    <div class="navbar">
+        <a href="index.html" class="nav-item">ቤት ገጽ</a>
+        <a href="deposit.html" class="nav-item">ገቢ</a>
+        <a href="team.html" class="nav-item">ቡድን</a>
+        <a href="profile.html" class="nav-item active">የእኔ</a>
+    </div>
+
+    <script>
+        // የተጠቃሚውን መረጃ ከ LocalStorage ማምጣት
+        const savedPhone = localStorage.getItem('userPhone');
+        if (savedPhone) {
+            document.getElementById('userPhone').innerText = savedPhone;
+        }
+
+        const savedInviteCode = localStorage.getItem('userInviteCode');
+        if (savedInviteCode) {
+            document.getElementById('userInviteCodeDisplay').innerText = "የግብዣ ኮድ: " + savedInviteCode;
+        }
+
+        let userBalance = parseFloat(localStorage.getItem('userBalance')) || 0.00;
+        document.getElementById('userBalance').innerText = "ETB " + userBalance.toFixed(2);
+
+        // ገንዘብ የማውጣት ሂደትን መቆጣጠር
+        function handleWithdraw(event) {
+            event.preventDefault();
+            const amount = parseFloat(document.getElementById('withdrawAmount').value);
+            const bank = document.getElementById('bankName').value;
+            const accNum = document.getElementById('accountNumber').value;
+            const accName = document.getElementById('accountName').value;
+
+            if (amount <= 0) {
+                alert("እባክዎ ትክክለኛ የብር መጠን ያስገቡ!");
+                return;
+            }
+
+            if (amount > userBalance) {
+                alert("ቀሪ ሂሳብዎ በቂ አይደለም!");
+                return;
+            }
+
+            // ሂሳቡን ከቀሪው ላይ መቀነስ
+            userBalance -= amount;
+            localStorage.setItem('userBalance', userBalance);
+            document.getElementById('userBalance').innerText = "ETB " + userBalance.toFixed(2);
+
+            alert("የገንዘብ ማውጣት ጥያቄዎ በባንክ አማራጭ (" + bank + ") በအောင်ነት ተልኳል!");
+            location.reload();
+        }
+    </script>
+</body>
+</html>

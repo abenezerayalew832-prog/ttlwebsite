@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTL - ዕቅድ/ሮቦት</title>
+    <style>
+        body { background-color: #0d1117; color: #ffffff; font-family: Arial, sans-serif; margin: 0; padding-bottom: 70px; }
+        .header { background-color: #161b22; padding: 15px; text-align: center; font-size: 18px; font-weight: bold; border-bottom: 1px solid #30363d; color: #58a6ff; }
+        .content { padding: 20px; text-align: center; margin-top: 40px; }
+        .task-card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 20px; margin-bottom: 15px; }
+        .start-btn { background: #238636; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
+        .navbar { position: fixed; bottom: 0; left: 0; width: 100%; background-color: #161b22; border-top: 1px solid #30363d; display: flex; justify-content: space-around; padding: 10px 0; z-index: 1000; }
+        .nav-item { color: #8b949e; text-decoration: none; font-size: 12px; text-align: center; }
+        .nav-item.active { color: #58a6ff; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="header">የሮቦት ዕቅድ</div>
+    <div class="content">
+        <div class="task-card">
+            <h3>የኳንቲታቲቭ ሥራ ማስጀመሪያ</h3>
+            <p style="color:#8b949e; font-size:13px;">የእርስዎን VIP ደረጃ በማንቃት ዕለታዊ ገቢዎን መሰብሰብ ይጀምሩ።</p>
+            <button class="start-btn" onclick="alert('ሥራው በሂደት ላይ ነው...')">ሥራ ጀምር</button>
+        </div>
+    </div>
+
+    <div class="navbar">
+        <a href="index.html" class="nav-item">ቤት ገጽ</a>
+        <a href="deposit.html" class="nav-item">ገቢ</a>
+        <a href="team.html" class="nav-item">ቡድን</a>
+        <a href="task.html" class="nav-item active">ዕቅድ</a>
+        <a href="profile.html" class="nav-item">የእኔ</a>
+    </div>
+</body>
+</html>

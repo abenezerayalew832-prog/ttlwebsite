@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTL - የቡድን አባላት</title>
+    <style>
+        body { background-color: #0d1117; color: #ffffff; font-family: Arial, sans-serif; margin: 0; padding-bottom: 70px; }
+        .header { background-color: #161b22; padding: 15px; text-align: center; font-size: 18px; font-weight: bold; border-bottom: 1px solid #30363d; color: #58a6ff; }
+        .box-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 15px; }
+        .stat-box { background-color: #1f6feb; padding: 15px; border-radius: 10px; text-align: center; }
+        .stat-num { font-size: 20px; font-weight: bold; margin-top: 5px; }
+        .levels { display: flex; justify-content: space-around; background: #161b22; padding: 10px; margin: 10px 15px; border-radius: 8px; }
+        .level-btn { background: #21262d; color: #fff; border: none; padding: 8px 15px; border-radius: 6px; font-size: 13px; cursor: pointer; }
+        .level-btn.active { background: #238636; }
+        .empty-state { text-align: center; color: #8b949e; margin-top: 50px; font-size: 14px; }
+        .navbar { position: fixed; bottom: 0; left: 0; width: 100%; background-color: #161b22; border-top: 1px solid #30363d; display: flex; justify-content: space-around; padding: 10px 0; z-index: 1000; }
+        .nav-item { color: #8b949e; text-decoration: none; font-size: 12px; text-align: center; }
+        .nav-item.active { color: #58a6ff; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="header">የእኔ ቡድን</div>
+    <div class="box-grid">
+        <div class="stat-box"><div>Team Size</div><div class="stat-num">0</div></div>
+        <div class="stat-box"><div>Recharge Members</div><div class="stat-num">0</div></div>
+        <div class="stat-box"><div>Team Size Today</div><div class="stat-num">0</div></div>
+        <div class="stat-box"><div>Effective Today</div><div class="stat-num">0</div></div>
+    </div>
+    <div class="levels">
+        <button class="level-btn active">ደረጃ 1 (0)</button>
+        <button class="level-btn">ደረጃ 2 (0)</button>
+        <button class="level-btn">ደረጃ 3 (0)</button>
+    </div>
+    <div class="empty-state">ምንም መረጃ የለም</div>
+
+    <div class="navbar">
+        <a href="index.html" class="nav-item">ቤት ገጽ</a>
+        <a href="deposit.html" class="nav-item">ገቢ</a>
+        <a href="team.html" class="nav-item active">ቡድን</a>
+        <a href="task.html" class="nav-item">ዕቅድ</a>
+        <a href="profile.html" class="nav-item">የእኔ</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTL - ገንዘብ ማውጣት (Withdraw)</title>
+    <style>
+        body { background-color: #0d1117; color: #ffffff; font-family: Arial, sans-serif; margin: 0; padding-bottom: 70px; }
+        .header { background-color: #161b22; padding: 15px; text-align: center; font-size: 18px; font-weight: bold; color: #58a6ff; border-bottom: 1px solid #30363d; }
+        .container { padding: 15px; max-width: 400px; margin: auto; }
+        .balance-box { background: linear-gradient(135deg, #238636, #2ea043); padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 20px; }
+        .balance-title { font-size: 13px; color: #d0d7de; margin-bottom: 5px; }
+        .balance-amount { font-size: 24px; font-weight: bold; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 6px; font-size: 13px; color: #8b949e; }
+        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #30363d; background-color: #161b22; color: #fff; box-sizing: border-box; font-size: 14px; }
+        .submit-btn { width: 100%; padding: 12px; background: linear-gradient(135deg, #1f6feb, #388bfd); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .navbar { position: fixed; bottom: 0; left: 0; width: 100%; background-color: #161b22; border-top: 1px solid #30363d; display: flex; justify-content: space-around; padding: 10px 0; z-index: 1000; }
+        .nav-item { color: #8b949e; text-decoration: none; font-size: 12px; text-align: center; }
+        .nav-item.active { color: #58a6ff; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="header">ገንዘብ ማውጣት (Withdraw)</div>
+
+    <div class="container">
+        <!-- የተጠቃሚው ቀሪ ሂሳብ ማሳያ -->
+        <div class="balance-box">
+            <div class="balance-title">ያሎት ቀሪ ሂሳብ</div>
+            <div class="balance-amount" id="availableBalance">ETB 0.00</div>
+        </div>
+
+        <form onsubmit="handleWithdraw(event)">
+            <div class="form-group">
+                <label>የሚያወጡትን የብር መጠን (Amount)</label>
+                <input type="number" id="withdrawAmount" placeholder="ብር ያስገቡ (ምሳሌ: 500)" required>
+            </div>
+
+            <div class="form-group">
+                <label>የባንክ ስም (Bank Name)</label>
+                <select id="bankName" required>
+                    <option value="">ባንክ ይምረጡ</option>
+                    <option value="CBE">የኢትዮጵያ ንግድ ባንክ (CBE)</option>
+                    <option value="Telebirr">ቴሌብር (Telebirr)</option>
+                    <option value="Awash">አዋሽ ባንክ (Awash Bank)</option>
+                    <option value="Dashen">ዳሸን ባንክ (Dashen Bank)</option>
+                    <option value="Abyssinia">አቢሲኒያ ባንክ (Bank of Abyssinia)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>የባንክ የሂሳብ ቁጥር / ስልክ ቁጥር</label>
+                <input type="text" id="accountNumber" placeholder="የባንክ አኮውንት ወይም የቴሌብር ቁጥር" required>
+            </div>
+
+            <div class="form-group">
+                <label>የባንክ ባለቤት ስም (Account Holder Name)</label>
+                <input type="text" id="accountName" placeholder="ሙሉ ስምዎን ያስገቡ" required>
+            </div>
+
+            <button type="submit" class="submit-btn">ገንዘብ ማውጣት ጠይቅ</button>
+        </form>
+    </div>
+
+    <div class="navbar">
+        <a href="index.html" class="nav-item">ቤት ገጽ</a>
+        <a href="deposit.html" class="nav-item">ገቢ</a>
+        <a href="team.html" class="nav-item">ቡድን</a>
+        <a href="task.html" class="nav-item">ዕቅድ</a>
+        <a href="profile.html" class="nav-item">የእኔ</a>
+    </div>
+
+    <script>
+        // ከ LocalStorage የተጠቃሚውን ትክክለኛ ቀሪ ሂሳብ ማምጣት
+        let userBalance = parseFloat(localStorage.getItem('userBalance')) || 0.00;
+        document.getElementById('availableBalance').innerText = "ETB " + userBalance.toFixed(2);
+
+        function handleWithdraw(event) {
+            event.preventDefault();
+            const amount = parseFloat(document.getElementById('withdrawAmount').value);
+            const bank = document.getElementById('bankName').value;
+            const accNum = document.getElementById('accountNumber').value;
+            const accName = document.getElementById('accountName').value;
+
+            if (amount <= 0) {
+                alert("እባክዎ ትክክለኛ የብር መጠን ያስገቡ!");
+                return;
+            }
+
+            if (amount > userBalance) {
+                alert("ቀሪ ሂሳብዎ በቂ አይደለም!");
+                return;
+            }
+
+            // ሂሳቡ ሲቀነስ ከቀሪው ላይ ቀንሶ ማስቀመጥ
+            userBalance -= amount;
+            localStorage.setItem('userBalance', userBalance);
+
+            alert("የገንዘብ ማውጣት ጥያቄዎ በအောင်ነት ተልኳል! ባንክዎ እስኪረጋገጥ ይጠብቁ።");
+            window.location.href = "profile.html";
+        }
+    </script>
+
+</body>
+</html>
