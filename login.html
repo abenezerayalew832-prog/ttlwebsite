@@ -100,8 +100,7 @@
 
     <div class="box">
         <h2>መግቢያ (Login)</h2>
-        <!-- ከታች ያለው action በቀጥታ ወደ index.html እንዲሄድ አድርጎታል -->
-        <form action="index.html" method="GET">
+        <form onsubmit="goToHome(event)">
             <div class="input-group">
                 <label for="phone">ስልክ ቁጥር</label>
                 <input type="text" id="phone" placeholder="ስልክ ቁጥርዎን ያስገቡ" required>
@@ -119,6 +118,13 @@
             በቴሌግራም ግባ (Login with Telegram)
         </a>
     </div>
+
+    <script>
+        function goToHome(event) {
+            event.preventDefault(); // ፎርሙ ራሱን እንዳያድስ ይከለክላል
+            window.location.href = "index.html"; // በቀጥታ ወደ index.html ይወስዳል
+        }
+    </script>
 
 </body>
 </html>
