@@ -1,130 +1,20 @@
+
 <!DOCTYPE html>
 <html lang="am">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TTL - መግቢያ (Login)</title>
-    <style>
-        body {
-            background-color: #0d1117;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .box {
-            background-color: #161b22;
-            padding: 25px;
-            border-radius: 12px;
-            width: 100%;
-            max-width: 350px;
-            border: 1px solid #30363d;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            box-sizing: border-box;
-        }
-        h2 {
-            margin-bottom: 20px;
-            color: #c9d1d9;
-        }
-        .input-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #8b949e;
-            font-size: 14px;
-        }
-        .input-group input {
-            width: 100%;
-            padding: 10px;
-            background-color: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            color: #c9d1d9;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-        .login-btn {
-            width: 100%;
-            padding: 12px;
-            background-color: #238636;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-        .login-btn:hover {
-            background-color: #2ea043;
-        }
-        .telegram-btn {
-            width: 100%;
-            padding: 12px;
-            background-color: #0088cc;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            box-sizing: border-box;
-            margin-top: 10px;
-        }
-        .telegram-btn:hover {
-            background-color: #0077b5;
-        }
-        .divider {
-            text-align: center;
-            margin: 15px 0;
-            color: #8b949e;
-            font-size: 14px;
-        }
-    </style>
+    <title>TTL - መግቢያ</title>
 </head>
-<body>
-
-    <div class="box">
-        <h2>መግቢያ (Login)</h2>
-        <form onsubmit="goToHome(event)">
-            <div class="input-group">
-                <label for="phone">ስልክ ቁጥር</label>
-                <input type="text" id="phone" placeholder="ስልክ ቁጥርዎን ያስገቡ" required>
-            </div>
-            <div class="input-group">
-                <label for="password">ፓስወርድ</label>
-                <input type="password" id="password" placeholder="ፓስወርድዎን ያስገቡ" required>
-            </div>
-            <button type="submit" class="login-btn">ግባ</button>
+<body style="background-color: #0d1117; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Arial;">
+    <div style="background: #161b22; padding: 25px; border-radius: 10px; width: 300px; text-align: center;">
+        <h2>መግቢያ</h2>
+        <form action="index.html" method="GET">
+            <input type="text" placeholder="ስልክ ቁጥር" required style="width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box;"><br>
+            <input type="password" placeholder="ፓስወርድ" required style="width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box;"><br>
+            <button type="submit" style="width: 100%; padding: 10px; background: #238636; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">ግባ</button>
         </form>
-
-        <div class="divider">ወይም</div>
-
-        <a href="https://t.me/YourBotName" class="telegram-btn" target="_blank">
-            በቴሌግራም ግባ (Login with Telegram)
-        </a>
+        <div style="margin: 15px 0; color: #8b949e;">ወይም</div>
+        <a href="https://t.me/YourBotName" target="_blank" style="display: block; padding: 10px; background: #0088cc; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">በቴሌግራም ግባ</a>
     </div>
-
-    <script>
-        function goToHome(event) {
-            event.preventDefault(); // ፎርሙ ራሱን እንዳያድስ ይከለክላል
-            window.location.href = "index.html"; // በቀጥታ ወደ index.html ይወስዳል
-        }
-    </script>
-
 </body>
 </html>
